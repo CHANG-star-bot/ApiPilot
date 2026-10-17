@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "total": 4,
+    "PASS": 2,
+    "FAIL": 1,
+    "ERROR": 1,
+    "pending": 1
+  },
+  "results": [
+    {
+      "name": "Mock PASS",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "name": "Mock FAIL",
+      "status": "FAIL",
+      "error": "Response value mismatch (values omitted)"
+    },
+    {
+      "name": "Mock ERROR",
+      "status": "ERROR",
+      "error": "Timeout: simulated timeout https://example.test?api_key=[REDACTED]; Authorization: [REDACTED]; Cookie: [REDACTED]"
+    },
+    {
+      "name": "Mock PASS after ERROR",
+      "status": "PASS",
+      "error": null
+    }
+  ],
+  "pending_cases": [
+    {
+      "name": "Needs item_id",
+      "method": "GET",
+      "path": "/items/{item_id}",
+      "reasons": [
+        "Missing path parameter: item_id"
+      ]
+    }
+  ]
+}

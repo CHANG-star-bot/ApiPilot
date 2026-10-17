@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "total": 2,
+    "PASS": 2,
+    "FAIL": 0,
+    "ERROR": 0,
+    "pending": 0
+  },
+  "results": [
+    {
+      "name": "JSONPlaceholder GET /users/1",
+      "status": "PASS",
+      "error": null
+    },
+    {
+      "name": "JSONPlaceholder GET /users/2",
+      "status": "PASS",
+      "error": null
+    }
+  ],
+  "pending_cases": []
+}

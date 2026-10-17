@@ -1,0 +1,1210 @@
+{
+  "kind": "real_model_acceptance",
+  "executable": false,
+  "status": "VALIDATED",
+  "requested_model": "openrouter/free",
+  "calls": 2,
+  "responses": 2,
+  "results": [
+    {
+      "fixture": "ai_scenarios_openapi.json",
+      "method": "GET",
+      "path": "/items",
+      "status": "VALIDATED",
+      "actual_model": "apodex/apodex-1.1-mini:free",
+      "metrics": {
+        "raw_json_type": "object",
+        "raw_suggestions": 8,
+        "raw_categories": {
+          "boundary": 2,
+          "negative": 4,
+          "normal": 2,
+          "unknown": 0
+        },
+        "invalid_items": 0,
+        "duplicate_names": 0,
+        "duplicate_inputs": 0,
+        "accepted_suggestions": 8,
+        "rejected_suggestions": 0,
+        "novel_inputs_vs_rules": 1
+      },
+      "rule_baseline": [
+        {
+          "name": "Rule: query limit declared_value",
+          "category": "normal",
+          "intent": "Review the declared_value strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "declared_value",
+              "value": 10,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit minimum",
+          "category": "boundary",
+          "intent": "Review the minimum strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "minimum",
+              "value": 1,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit maximum",
+          "category": "boundary",
+          "intent": "Review the maximum strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "maximum",
+              "value": 100,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit below_minimum",
+          "category": "negative",
+          "intent": "Review the below_minimum strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "below_minimum",
+              "value": 0,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit above_maximum",
+          "category": "negative",
+          "intent": "Review the above_maximum strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "above_maximum",
+              "value": 101,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit omit",
+          "category": "negative",
+          "intent": "Review the omit strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "omit",
+              "value": null,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query limit user_supplied",
+          "category": "normal",
+          "intent": "Review the user_supplied strategy for limit",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "limit",
+              "in": "query",
+              "strategy": "user_supplied",
+              "value": null,
+              "source": "user_required"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": [
+            "Provide query parameter: limit"
+          ]
+        }
+      ],
+      "suggestions": {
+        "kind": "ai_scenario_suggestions",
+        "executable": false,
+        "openapi_declared": {
+          "method": "GET",
+          "path": "/items",
+          "parameters": [
+            {
+              "name": "limit",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 100,
+                "example": 10
+              }
+            }
+          ],
+          "has_request_body": false
+        },
+        "ai_inferred": [
+          {
+            "name": "Retrieve items with declared example limit",
+            "category": "normal",
+            "intent": "Verify successful retrieval using the documented example parameter value",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": 10,
+                "source": "openapi_declared"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the response contains the expected items matching the limit and state the observed status",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items with valid limit within range",
+            "category": "normal",
+            "intent": "Verify successful retrieval with a value supported by the schema bounds",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the user supplies a valid integer within the declared bounds and state the observed status",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide query parameter: limit"
+            ]
+          },
+          {
+            "name": "Retrieve items with boundary minimum limit",
+            "category": "boundary",
+            "intent": "Verify the lowest integer allowed by the schema is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "minimum",
+                "value": 1,
+                "source": "openapi_declared"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API accepts the declared minimum value and does not return a validation error",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items with boundary maximum limit",
+            "category": "boundary",
+            "intent": "Verify the highest integer allowed by the schema is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "maximum",
+                "value": 100,
+                "source": "openapi_declared"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API accepts the declared maximum value and does not return a validation error",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items with limit below minimum",
+            "category": "negative",
+            "intent": "Verify the API rejects integers smaller than the declared minimum",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "below_minimum",
+                "value": 0,
+                "source": "ai_inferred"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API rejects this value and describe the validation error response",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items with limit above maximum",
+            "category": "negative",
+            "intent": "Verify the API rejects integers larger than the declared maximum",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "above_maximum",
+                "value": 101,
+                "source": "ai_inferred"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API rejects this value and describe the validation error response",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items omitting required limit",
+            "category": "negative",
+            "intent": "Verify the API enforces the required query parameter constraint",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "omit",
+                "value": null,
+                "source": "ai_inferred"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API signals the missing required parameter and describe the error",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": []
+          },
+          {
+            "name": "Retrieve items with non-numeric limit",
+            "category": "negative",
+            "intent": "Verify the API enforces the integer type constraint",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "limit",
+                "in": "query",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm the API rejects non-integer input and state the validation rules",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide query parameter: limit"
+            ]
+          }
+        ],
+        "user_required": [
+          "Confirm expected status and response assertions for every suggestion",
+          "Provide/approve business data and authentication when needed"
+        ]
+      },
+      "pending_information": [
+        "Confirm expected status and response assertions for every suggestion"
+      ]
+    },
+    {
+      "fixture": "ai_review_openapi.json",
+      "method": "POST",
+      "path": "/reviews/{item_id}",
+      "status": "VALIDATED",
+      "actual_model": "nvidia/nemotron-3-super-120b-a12b:free",
+      "metrics": {
+        "raw_json_type": "object",
+        "raw_suggestions": 8,
+        "raw_categories": {
+          "boundary": 2,
+          "negative": 3,
+          "normal": 3,
+          "unknown": 0
+        },
+        "invalid_items": 0,
+        "duplicate_names": 0,
+        "duplicate_inputs": 1,
+        "accepted_suggestions": 8,
+        "rejected_suggestions": 0,
+        "novel_inputs_vs_rules": 7
+      },
+      "rule_baseline": [
+        {
+          "name": "Rule: path item_id omit",
+          "category": "negative",
+          "intent": "Review the omit strategy for item_id",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "item_id",
+              "in": "path",
+              "strategy": "omit",
+              "value": null,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: path item_id user_supplied",
+          "category": "normal",
+          "intent": "Review the user_supplied strategy for item_id",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "item_id",
+              "in": "path",
+              "strategy": "user_supplied",
+              "value": null,
+              "source": "user_required"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": [
+            "Provide path parameter: item_id"
+          ]
+        },
+        {
+          "name": "Rule: query rating declared_value",
+          "category": "normal",
+          "intent": "Review the declared_value strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "declared_value",
+              "value": 3,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating minimum",
+          "category": "boundary",
+          "intent": "Review the minimum strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "minimum",
+              "value": 1,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating maximum",
+          "category": "boundary",
+          "intent": "Review the maximum strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "maximum",
+              "value": 5,
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating below_minimum",
+          "category": "negative",
+          "intent": "Review the below_minimum strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "below_minimum",
+              "value": 0,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating above_maximum",
+          "category": "negative",
+          "intent": "Review the above_maximum strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "above_maximum",
+              "value": 6,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating omit",
+          "category": "negative",
+          "intent": "Review the omit strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "omit",
+              "value": null,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query rating user_supplied",
+          "category": "normal",
+          "intent": "Review the user_supplied strategy for rating",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "rating",
+              "in": "query",
+              "strategy": "user_supplied",
+              "value": null,
+              "source": "user_required"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": [
+            "Provide query parameter: rating"
+          ]
+        },
+        {
+          "name": "Rule: query mode declared_value",
+          "category": "normal",
+          "intent": "Review the declared_value strategy for mode",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "mode",
+              "in": "query",
+              "strategy": "declared_value",
+              "value": "preview",
+              "source": "openapi_declared"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query mode omit",
+          "category": "negative",
+          "intent": "Review the omit strategy for mode",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "mode",
+              "in": "query",
+              "strategy": "omit",
+              "value": null,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: query mode user_supplied",
+          "category": "normal",
+          "intent": "Review the user_supplied strategy for mode",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "mode",
+              "in": "query",
+              "strategy": "user_supplied",
+              "value": null,
+              "source": "user_required"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": [
+            "Provide query parameter: mode"
+          ]
+        },
+        {
+          "name": "Rule: header Authorization omit",
+          "category": "negative",
+          "intent": "Review the omit strategy for Authorization",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "strategy": "omit",
+              "value": null,
+              "source": "rule_generated"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": []
+        },
+        {
+          "name": "Rule: header Authorization user_supplied",
+          "category": "normal",
+          "intent": "Review the user_supplied strategy for Authorization",
+          "source": "rule_generated",
+          "inputs": [
+            {
+              "name": "Authorization",
+              "in": "header",
+              "strategy": "user_supplied",
+              "value": null,
+              "source": "user_required"
+            }
+          ],
+          "expected_result": {
+            "status_code": null,
+            "body": null,
+            "notes": "Confirm actual API behavior and assertions",
+            "source": "user_required",
+            "confirmed": false
+          },
+          "user_required": [
+            "Provide header parameter: Authorization"
+          ]
+        }
+      ],
+      "suggestions": {
+        "kind": "ai_scenario_suggestions",
+        "executable": false,
+        "openapi_declared": {
+          "method": "POST",
+          "path": "/reviews/{item_id}",
+          "parameters": [
+            {
+              "name": "item_id",
+              "in": "path",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            },
+            {
+              "name": "rating",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 5,
+                "example": 3
+              }
+            },
+            {
+              "name": "mode",
+              "in": "query",
+              "schema": {
+                "type": "string",
+                "enum": [
+                  "preview",
+                  "submit"
+                ]
+              }
+            },
+            {
+              "name": "Authorization",
+              "in": "header",
+              "required": true,
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "has_request_body": true
+        },
+        "ai_inferred": [
+          {
+            "name": "Normal request with preview mode",
+            "category": "normal",
+            "intent": "Verify that a valid request with preview mode is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": 3,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API processes the request and returns a successful response",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Normal request with submit mode",
+            "category": "normal",
+            "intent": "Verify that a valid request with submit mode is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": 3,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API processes the request and returns a successful response",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Boundary rating minimum",
+            "category": "boundary",
+            "intent": "Check that the minimum allowed rating is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "minimum",
+                "value": 1,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API accepts the rating value of 1",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Boundary rating maximum",
+            "category": "boundary",
+            "intent": "Check that the maximum allowed rating is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "maximum",
+                "value": 5,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API accepts the rating value of 5",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Negative rating below minimum",
+            "category": "negative",
+            "intent": "Verify that a rating below the allowed range is rejected",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "below_minimum",
+                "value": 0,
+                "source": "ai_inferred"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API rejects the rating value of 0 with an appropriate error",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Negative rating above maximum",
+            "category": "negative",
+            "intent": "Verify that a rating above the allowed range is rejected",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "above_maximum",
+                "value": 6,
+                "source": "ai_inferred"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API rejects the rating value of 6 with an appropriate error",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          },
+          {
+            "name": "Negative missing Authorization header",
+            "category": "negative",
+            "intent": "Verify that omitting the required Authorization header results in an error",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": 3,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": "preview",
+                "source": "openapi_declared"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "omit",
+                "value": null,
+                "source": "ai_inferred"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API returns an error when the Authorization header is omitted",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id"
+            ]
+          },
+          {
+            "name": "Normal optional mode omitted",
+            "category": "normal",
+            "intent": "Verify that omitting the optional mode parameter is accepted",
+            "source": "ai_inferred",
+            "inputs": [
+              {
+                "name": "item_id",
+                "in": "path",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              },
+              {
+                "name": "rating",
+                "in": "query",
+                "strategy": "declared_value",
+                "value": 3,
+                "source": "openapi_declared"
+              },
+              {
+                "name": "mode",
+                "in": "query",
+                "strategy": "omit",
+                "value": null,
+                "source": "ai_inferred"
+              },
+              {
+                "name": "Authorization",
+                "in": "header",
+                "strategy": "user_supplied",
+                "value": null,
+                "source": "user_required"
+              }
+            ],
+            "expected_result": {
+              "status_code": null,
+              "body": null,
+              "notes": "Confirm that the API processes the request correctly when the mode parameter is omitted",
+              "source": "user_required",
+              "confirmed": false
+            },
+            "user_required": [
+              "Provide path parameter: item_id",
+              "Provide header parameter: Authorization"
+            ]
+          }
+        ],
+        "user_required": [
+          "Confirm expected status and response assertions for every suggestion",
+          "Provide/approve business data and authentication when needed",
+          "Provide request Body schema and business data; parse_openapi currently exposes only Body presence"
+        ]
+      },
+      "pending_information": [
+        "Confirm expected status and response assertions for every suggestion",
+        "Provide/approve path parameter: item_id",
+        "Provide/approve header parameter: Authorization",
+        "Provide Body schema and approved business data; parser exposes only Body presence"
+      ]
+    }
+  ],
+  "quality_note": "Extra input combinations are only novelty, not proof of useful tests. Human review is required."
+}

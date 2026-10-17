@@ -1,0 +1,59 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "JSONPlaceholder real GET acceptance",
+    "version": "1.0.0",
+    "description": "Two concrete public GET endpoints for real CLI acceptance. No local server or mocks."
+  },
+  "servers": [
+    {"url": "https://jsonplaceholder.typicode.com"}
+  ],
+  "paths": {
+    "/users/1": {
+      "get": {
+        "summary": "JSONPlaceholder GET /users/1",
+        "responses": {
+          "200": {
+            "description": "The existing user with ID 1",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {"type": "integer"},
+                    "name": {"type": "string"},
+                    "username": {"type": "string"},
+                    "email": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/2": {
+      "get": {
+        "summary": "JSONPlaceholder GET /users/2",
+        "responses": {
+          "200": {
+            "description": "The existing user with ID 2",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {"type": "integer"},
+                    "name": {"type": "string"},
+                    "username": {"type": "string"},
+                    "email": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "scenarios": [
+    {
+      "name": "正常页大小建议",
+      "category": "normal",
+      "intent": "使用文档明确给出的页大小示例，检查正常参数处理",
+      "inputs": [{"name": "limit", "in": "query", "strategy": "declared_value"}],
+      "expected_result": {"status_code": null, "body": null, "notes": "请确认该输入的状态码及列表响应断言"}
+    },
+    {
+      "name": "页大小上界建议",
+      "category": "boundary",
+      "intent": "使用文档声明的最大页大小，检查上界处理",
+      "inputs": [{"name": "limit", "in": "query", "strategy": "maximum"}],
+      "expected_result": {"status_code": null, "body": null, "notes": "请确认上界输入是否被接受，以及实际响应约束"}
+    },
+    {
+      "name": "页大小越界建议",
+      "category": "negative",
+      "intent": "使用最大值加一的合成输入，检查接口如何处理越界参数",
+      "inputs": [{"name": "limit", "in": "query", "strategy": "above_maximum"}],
+      "expected_result": {"status_code": null, "body": null, "notes": "请确认接口是拒绝、截断还是采用其他策略；具体状态码和响应均待确认"}
+    }
+  ]
+}

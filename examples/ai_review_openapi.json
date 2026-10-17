@@ -1,0 +1,26 @@
+{
+  "openapi": "3.1.0",
+  "info": {"title": "AI review suggestion fixture (no server)", "version": "0.2.0"},
+  "paths": {
+    "/reviews/{item_id}": {
+      "post": {
+        "summary": "Suggest review tests without inventing item IDs or review data",
+        "parameters": [
+          {"name": "item_id", "in": "path", "required": true, "schema": {"type": "string"}},
+          {"name": "rating", "in": "query", "required": true,
+           "schema": {"type": "integer", "minimum": 1, "maximum": 5, "example": 3}},
+          {"name": "mode", "in": "query", "schema": {"type": "string", "enum": ["preview", "submit"]}},
+          {"name": "Authorization", "in": "header", "required": true, "schema": {"type": "string"}}
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {"application/json": {"schema": {
+            "type": "object", "required": ["text"],
+            "properties": {"text": {"type": "string", "minLength": 1, "maxLength": 200}}
+          }}}
+        },
+        "responses": {"default": {"description": "Actual behavior and assertions require confirmation"}}
+      }
+    }
+  }
+}

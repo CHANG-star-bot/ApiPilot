@@ -1,0 +1,97 @@
+{
+  "kind": "ai_scenario_suggestions",
+  "executable": false,
+  "openapi_declared": {
+    "method": "GET",
+    "path": "/items",
+    "parameters": [
+      {
+        "name": "limit",
+        "in": "query",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100,
+          "example": 10
+        }
+      }
+    ],
+    "has_request_body": false
+  },
+  "ai_inferred": [
+    {
+      "name": "正常页大小建议",
+      "category": "normal",
+      "intent": "使用文档明确给出的页大小示例，检查正常参数处理",
+      "source": "ai_inferred",
+      "inputs": [
+        {
+          "name": "limit",
+          "in": "query",
+          "strategy": "declared_value",
+          "value": 10,
+          "source": "openapi_declared"
+        }
+      ],
+      "expected_result": {
+        "status_code": null,
+        "body": null,
+        "notes": "请确认该输入的状态码及列表响应断言",
+        "source": "user_required",
+        "confirmed": false
+      },
+      "user_required": []
+    },
+    {
+      "name": "页大小上界建议",
+      "category": "boundary",
+      "intent": "使用文档声明的最大页大小，检查上界处理",
+      "source": "ai_inferred",
+      "inputs": [
+        {
+          "name": "limit",
+          "in": "query",
+          "strategy": "maximum",
+          "value": 100,
+          "source": "openapi_declared"
+        }
+      ],
+      "expected_result": {
+        "status_code": null,
+        "body": null,
+        "notes": "请确认上界输入是否被接受，以及实际响应约束",
+        "source": "user_required",
+        "confirmed": false
+      },
+      "user_required": []
+    },
+    {
+      "name": "页大小越界建议",
+      "category": "negative",
+      "intent": "使用最大值加一的合成输入，检查接口如何处理越界参数",
+      "source": "ai_inferred",
+      "inputs": [
+        {
+          "name": "limit",
+          "in": "query",
+          "strategy": "above_maximum",
+          "value": 101,
+          "source": "ai_inferred"
+        }
+      ],
+      "expected_result": {
+        "status_code": null,
+        "body": null,
+        "notes": "请确认接口是拒绝、截断还是采用其他策略；具体状态码和响应均待确认",
+        "source": "user_required",
+        "confirmed": false
+      },
+      "user_required": []
+    }
+  ],
+  "user_required": [
+    "Confirm expected status and response assertions for every suggestion",
+    "Provide/approve business data and authentication when needed"
+  ]
+}

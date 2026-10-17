@@ -1,0 +1,46 @@
+[
+  {
+    "name": "get user 1",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/users/1",
+    "expected_status": 200,
+    "expected_body": {
+      "id": 1
+    }
+  },
+  {
+    "name": "get user 2",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/users/2",
+    "expected_status": 200,
+    "expected_body": {
+      "id": 2
+    }
+  },
+  {
+    "name": "get user 3",
+    "method": "GET",
+    "url": "https://jsonplaceholder.typicode.com/users/3",
+    "expected_status": 200,
+    "expected_body": {
+      "id": 3
+    }
+  },
+  {
+  "name": "get comments by post id",
+  "method": "GET",
+  "url": "https://jsonplaceholder.typicode.com/comments",
+  "params": {
+    "postId": 1
+  },
+  "headers": {
+    "Accept": "application/json"
+  },
+  "expected_status": 200,
+   "expected_body": [
+  {
+    "postId": 1
+  }
+]
+}
+]

@@ -1,0 +1,34 @@
+{
+  "description": "Real HTTPS GET acceptance. Expected fields checked against the public endpoint responses on 2026-10-10 and fixed before running the CLI.",
+  "sources": [
+    "https://jsonplaceholder.typicode.com/users/1",
+    "https://jsonplaceholder.typicode.com/users/2"
+  ],
+  "base_url": "https://jsonplaceholder.typicode.com",
+  "cases": [
+    {
+      "method": "GET",
+      "path": "/users/1",
+      "headers": {"Accept": "application/json"},
+      "expected_status": 200,
+      "expected_body": {
+        "id": 1,
+        "name": "Leanne Graham",
+        "username": "Bret",
+        "email": "Sincere@april.biz"
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/users/2",
+      "headers": {"Accept": "application/json"},
+      "expected_status": 200,
+      "expected_body": {
+        "id": 2,
+        "name": "Ervin Howell",
+        "username": "Antonette",
+        "email": "Shanna@melissa.tv"
+      }
+    }
+  ]
+}

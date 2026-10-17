@@ -1,0 +1,16 @@
+{
+  "openapi": "3.0.3",
+  "info": {"title": "AI suggestion fixture (no server)", "version": "0.1.0"},
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "List items with an explicit page size constraint",
+        "parameters": [
+          {"name": "limit", "in": "query", "required": true,
+           "schema": {"type": "integer", "minimum": 1, "maximum": 100, "example": 10}}
+        ],
+        "responses": {"default": {"description": "Actual status and response assertions require user confirmation"}}
+      }
+    }
+  }
+}
